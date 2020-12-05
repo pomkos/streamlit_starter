@@ -11,7 +11,7 @@ For purposes of this script, your streamlit projects are assumed to be in their 
 ```
 |-- home
     |-- projects
-        |-- streamlit_project1 # folder name matches script name
+        |-- streamlit_project1 # folder name matches script name. Will store project log (nohup.txt)
             |--streamlit_project1.py # script name matches folder name
         |-- streamlit_project2
             |--streamlit_project2.py
@@ -39,6 +39,8 @@ Then just go in the cloned repo and start the script with the appropriate tags
 * `-e`: environment name, assumed that each streamlit project has its own environment
 * -`p`: port you would like to access the streamlit project at
 * -`h`: show the help page of `st_starter.sh`, which lists the different flags
+
+Each streamlit project will have a `nohup.txt` created, this is the log.
 
 ## Kill the streamlit instance
 
