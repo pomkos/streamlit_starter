@@ -6,7 +6,7 @@ A bash script to start streamlit scripts in the background.
 
 ## Run the script
 
-* Assumed folder layout
+For purposes of this script, your streamlit projects are assumed to be in their own folders within one `projects` folder in the home directory:
 
 ```
 |-- home
@@ -23,16 +23,20 @@ A bash script to start streamlit scripts in the background.
         
 ```
 
-* The script folder is assumed to be the name of the script as well. So `my_dash.py` is assumed to be in the `my_dash` folder
+To start one project in the background, just go in the cloned repo and start the script with the appropriate tags
 
 ```
 cd streamlit_starter
-./st_starter.sh -f script_folder -e script_env -p 8501
+./st_starter.sh -f my_dash -e dash_env -p 8501
 ```
+* `-f`: folder name, assumed to be the streamlit python script name as well
+* `-e`: environment name, assumed that each streamlit project has its own environment
+* -`p`: port you would like to access the streamlit project at
+* -`h`: show the help page of `st_starter.sh`, which lists the different flags
 
 ## Kill the streamlit instance
 
-There's a couple options to kill streamlit instance:
+There's a couple options to kill streamlit instances:
 
 ```
 # View streamlit instances running in the background, but it will not show the name
@@ -45,7 +49,7 @@ pkill -f my_dash.py
 killall -C streamlit
 ```
 
-# Crontab
+# Run at Startup with Crontab
 
 Customize then add the following line at the end of `crontab -e` to have the script started on each reboot. A crontab line is needed for each script.
 
