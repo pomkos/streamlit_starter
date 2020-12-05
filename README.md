@@ -1,6 +1,11 @@
 # Description
 
-A bash script to start streamlit scripts in the background.
+A bash script to start streamlit scripts in the background. Was created out of a desire to run my various streamlit projects simultaneously, easily, and at ports I wanted them at. Check em out!
+
+* [Portfolio](https://github.com/pomkos/portfolio) #wip
+* [Covid Dashboard](https://github.com/pomkos/covid_dash) #wip
+* [Venmo Calculator](https://github.com/pomkos/payme) #finished
+* [Protein Calculator](https://github.com/pomkos/brotein) #finished
 
 # How-to
 
