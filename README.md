@@ -23,10 +23,16 @@ For purposes of this script, your streamlit projects are assumed to be in their 
         
 ```
 
-To start one project in the background, just go in the cloned repo and start the script with the appropriate tags
+To start one project in the background, first the script must be made an executable:
 
 ```
 cd streamlit_starter
+sudo chmod +x st_starter.sh
+```
+
+Then just go in the cloned repo and start the script with the appropriate tags
+
+```
 ./st_starter.sh -f my_dash -e dash_env -p 8501
 ```
 * `-f`: folder name, assumed to be the streamlit python script name as well
