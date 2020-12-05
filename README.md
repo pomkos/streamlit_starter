@@ -16,7 +16,7 @@ A bash script to start streamlit scripts in the background.
         |-- streamlit_project3
             |--streamlit_project3.py
     |-- streamlit_starter # cloned repo
-        |-- st_starter.py
+        |-- st_starter.sh
     |-- scripts # crontab logs are stored here
         
 ```
