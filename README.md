@@ -32,6 +32,8 @@ cd streamlit_starter
 
 Customize then add the following line at the end of `crontab -e` to have the script started on each reboot. A crontab line is needed for each script.
 
+* The following will run my_dash.py on at `localhost:8501` in the dash_env environment every time the OS is rebooted. All terminal outputs are stored in `scripts/dash_log.txt`
+
 ```
-@reboot /bin/bash ~/streamlit_starter/st_starter.sh -f script_folder -e script_env -p 8501 >> ~/scripts/script_log.txt
+@reboot /bin/bash ~/streamlit_starter/st_starter.sh -f my_dash -e dash_env -p 8501 >> ~/scripts/dash_log.txt
 ```
