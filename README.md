@@ -4,6 +4,8 @@ A bash script to start streamlit scripts in the background.
 
 # How-to
 
+## Run the script
+
 * Assumed folder layout
 
 ```
@@ -26,6 +28,21 @@ A bash script to start streamlit scripts in the background.
 ```
 cd streamlit_starter
 ./st_starter.sh -f script_folder -e script_env -p 8501
+```
+
+## Kill the streamlit instance
+
+There's a couple options to kill streamlit instance:
+
+```
+# View streamlit instances running in the background, but it will not show the name
+ps -C streamlit
+
+# Kill a specific streamlit instance
+pkill -f my_dash.py
+
+# Kill all streamlit instances
+killall -C streamlit
 ```
 
 # Crontab
