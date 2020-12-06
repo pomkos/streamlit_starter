@@ -1,6 +1,6 @@
 #!/bin/bash
 
-db_user="CHANGE ME" # in the format of user:pw
+db_user="CHANGE ME" # in the format of "user:pw", quotes included
 db_ip="CHANGE ME" # such as 192.168.1.11
 db_port="CHANGE ME" # such as 5432
 
