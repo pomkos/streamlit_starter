@@ -1,3 +1,14 @@
+# Table of Contents
+1. [Description](#description)
+2. [How-To](#how-to)
+    1. [Run the script](#run-the-script)
+        1. [Run it once](#run-it-once)
+        2. [Run it all at once](#run-it-all-at-once)
+    2. [Kill the streamlit instance](#kill-the-streamlit-instance)
+3. [Run at Startup with Crontab](#run-at-startup-with-crontab)
+    1. [Run one](#run-one)
+    2. [Run many](#run-many)
+
 # Description
 
 A bash script to start streamlit scripts in the background. Was created out of a desire to run my various streamlit projects simultaneously, easily, and at ports I wanted them at. Check em out!
@@ -23,7 +34,8 @@ For purposes of this script, your streamlit projects are assumed to be in their 
         |-- streamlit_project3
             |--streamlit_project3.py
     |-- streamlit_starter # cloned repo
-        |-- st_starter.sh
+        |-- st_starter.sh # starts streamlit script
+        |-- secret.sh # db info, multi-script start. For convenience
     |-- scripts # crontab logs are stored here
         
 ```
@@ -75,8 +87,16 @@ killall streamlit
 
 Customize then add the following line at the end of `crontab -e` to have the script started on each reboot. A crontab line is needed for each script.
 
-* The following will run `my_dash.py` on at `localhost:8501` in the `dash_env` environment every time the OS is rebooted. All terminal outputs are stored in `scripts/dash_log.txt`
+## Run one
+The following will run `my_dash.py` on at `localhost:8501` in the `dash_env` environment every time the OS is rebooted. All terminal outputs are stored in `scripts/dash_log.txt`
 
 ```
 @reboot /bin/bash ~/streamlit_starter/st_starter.sh -f my_dash -e dash_env -p 8501 >> ~/scripts/dash_log.txt
+```
+
+## Run many
+This will run all scripts that are in the `secret.sh` file at the appropriate ports and in the appropriate environments, each time the OS is rebooted. All terminal outputs will be stored in their respective folders.
+
+```
+@reboot /bin/bash ~/streamlit_starter/secret.sh
 ```
