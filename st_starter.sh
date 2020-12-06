@@ -15,7 +15,7 @@ Help()
    echo "f    Folder python script is in. Assume script name = folder name"
    echo "e    Conda environment to use."
    echo "p    Port to publish on."
-   echo "u    Database user:pw as string"
+   echo "u    Database 'user:pw', quotes included"
    echo "i    Database local ip"
    echo "r    Database port"
    echo 
