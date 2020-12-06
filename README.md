@@ -2,8 +2,9 @@
 1. [Description](#description)
 2. [How-To](#how-to)
     1. [Run the script](#run-the-script)
-        1. [Run it once](#run-it-once)
-        2. [Run it all at once](#run-it-all-at-once)
+        1. [Prerequisites](#prerequisites)
+        2. [Manually](#manually)
+        3. [Automatically](#automatically)
     2. [Kill the streamlit instance](#kill-the-streamlit-instance)
 3. [Run at Startup with Crontab](#run-at-startup-with-crontab)
     1. [Run one](#run-one)
@@ -22,6 +23,7 @@ A bash script to start streamlit scripts in the background. Was created out of a
 
 ## Run the script
 
+### Prerequisites
 For purposes of this script, your streamlit projects are assumed to be in their own folders within one `projects` folder in the home directory:
 
 ```
@@ -35,40 +37,54 @@ For purposes of this script, your streamlit projects are assumed to be in their 
             |--streamlit_project3.py
     |-- streamlit_starter # cloned repo
         |-- st_starter.sh # starts streamlit script
-        |-- secret.sh # db info, multi-script start. For convenience
-    |-- scripts # crontab logs are stored here
-        
+        |-- secret.sh # input information here
+        |-- log_streamlit_project1.txt # these will be created automatically
+        |-- log_streamlit_project2.txt
+        |-- log_streamlit_project3.txt        
 ```
 
-### Run it once
-
-To start one project in the background, first the script must be made an executable:
+Make the scripts executable by doing the following:
 
 ```
 cd streamlit_starter
-sudo chmod +x st_starter.sh
+chmod +x secret.sh 
+chmod +x st_starter.sh
 ```
 
-Then just start the script with the appropriate tags
+### Manually
+
+To start one project in the background manually, use the `st_starter.sh` script with the appropriate tags:
 
 ```
 ./st_starter.sh -f my_dash -e dash_env -p 8501 -u db_user_pw -i db_ip_address -r db_port
 ```
 * h    Print this Help.
-* f    Folder python script is in. Assume script name = folder name
+* f    Folder python script is in. Assumes script name = folder name
 * e    Conda environment to use.
 * p    Port to publish on.
 * u    Database user:pw as string
 * i    Database local ip
 * r    Database port
 
-Each streamlit project will have a `nohup.out` created in its folder, this is the log.
+The streamlit project will have a `nohup.out` created in its folder, this is the streamlit log.
 
-### Run it all at once
+### Automatically
 
-To start many projects in the background, first make `secret.sh` executable and then edit to add the database user/password, IP, and port.
+To start many projects in the background, edit the `secret.sh` to add both streamlit and database information. Note that `my_dash.py` must be in a folder called `my_dash`.
 
-## Kill the streamlit instance
+```
+#!/bin/bash
+
+db_user="my_user:my_pw" # Database  login in the format of "my_user:my_pw". Quotes included
+db_ip=192.168.1.11   # Database local ip such as 192.168.1.11, without http. Quotes not included
+db_port=5432 # Database port such as 5432. Quotes not included
+
+# start script |   folder    |  conda_env  |  port  |          database info         |     log file location
+./st_starter.sh -f my_dash    -e dash_env   -p 8501  -u $db_user -i $db_ip -r $db_port >> ~/streamlit_starter/log_dash.txt
+./st_starter.sh -f portfolio  -e port_env   -p 8502  -u $db_user -i $db_ip -r $db_port >> ~/streamlit_starter/log_port.txt
+```
+
+## Kill streamlit instances
 
 There's a couple options to kill streamlit instances:
 
