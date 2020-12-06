@@ -59,7 +59,7 @@ ps -C streamlit
 pkill -f my_dash.py
 
 # Kill all streamlit instances
-killall -C streamlit
+killall streamlit
 ```
 
 # Run at Startup with Crontab
