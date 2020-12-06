@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ################################################################################
 # Help                                                                         #
 ################################################################################
@@ -7,13 +9,16 @@ Help()
    echo
    echo "Starts a streamlit python script."
    echo
-   echo "Syntax: scriptTemplate [-h|f|e|p]"
+   echo "Syntax: scriptTemplate [-h|f|e|p|u|i|r]"
    echo "options:"
+   echo "h     Print this Help."
    echo "f     Folder python script is in. Assume script name = folder name"
    echo "e     Conda environment to use."
    echo "p     Port to publish on."
-   echo "h     Print this Help."
-   echo
+   echo "u    Database user:pw as string"
+   echo "i    Database local ip"
+   echo "r    Database port"
+   echo 
 }
 
 ################################################################################
@@ -25,26 +30,34 @@ run_script()
 
     cd ~/projects/$folder
     conda activate $my_env # activate the new conda env
-    nohup streamlit run $folder.py --server.port $port & # run in background
+    nohup streamlit run $folder.py $db_up $db_ip $db_port --server.port $port & # run in background
 
     echo "Running $folder.py on port $port! "
 }
 
 
 # get options
-while getopts ":h:f:e:p:" option; do
+while getopts ":hf:e:p:u:i:r:" option; do
     case $option in
-        h)  #display help
+        h)  # display Help
             Help
-            exit;;
-        \?) #incorrect option
-            echo "Error: Invalid option"
             exit;;
         f) folder=${OPTARG};;
         e) my_env=${OPTARG};;
         p) port=${OPTARG};;
+	u) db_up=${OPTARG};;
+	i) db_ip=${OPTARG};;
+	r) db_port=${OPTARG};;
+        \?) #incorrect option
+            echo "Error: Invalid option"
+            exit;;
+
     esac
 done
 
-run_script
-
+if [ "$1" == "-f" ]; then
+    run_script
+else
+    echo "The first option should be -f. Please pass -h for more information."
+    exit 0
+fi
