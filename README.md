@@ -28,6 +28,8 @@ For purposes of this script, your streamlit projects are assumed to be in their 
         
 ```
 
+### Run it once
+
 To start one project in the background, first the script must be made an executable:
 
 ```
@@ -38,14 +40,21 @@ sudo chmod +x st_starter.sh
 Then just start the script with the appropriate tags
 
 ```
-./st_starter.sh -f my_dash -e dash_env -p 8501
+./st_starter.sh -f my_dash -e dash_env -p 8501 -u db_user_pw -i db_ip_address -r db_port
 ```
-* `-f`: folder name, assumed to be the streamlit python script name as well
-* `-e`: environment name, assumed that each streamlit project has its own environment
-* -`p`: port you would like to access the streamlit project at
-* -`h`: show the help page of `st_starter.sh`, which lists the different flags
+* h    Print this Help.
+* f    Folder python script is in. Assume script name = folder name
+* e    Conda environment to use.
+* p    Port to publish on.
+* u    Database user:pw as string
+* i    Database local ip
+* r    Database port
 
 Each streamlit project will have a `nohup.out` created in its folder, this is the log.
+
+### Run it all at once
+
+To start many projects in the background, first make `secret.sh` executable and then edit to add the database user/password, IP, and port.
 
 ## Kill the streamlit instance
 
