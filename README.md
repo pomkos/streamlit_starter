@@ -51,6 +51,22 @@ chmod +x secret.sh
 chmod +x st_starter.sh
 ```
 
+### Automatically
+
+To start many projects in the background, edit the `secret.sh` to add both streamlit and database information. Note that `my_dash.py` must be in a folder called `my_dash`.
+
+```
+#!/bin/bash
+
+db_user="my_user:my_pw" # Database  login in the format of "my_user:my_pw". Quotes included
+db_ip=192.168.1.11   # Database local ip such as 192.168.1.11, without http. Quotes not included
+db_port=5432 # Database port such as 5432. Quotes not included
+
+# start script |   folder    |  conda_env  |  port  |          database info         |     log file location
+./st_starter.sh -f my_dash    -e dash_env   -p 8501  -u $db_user -i $db_ip -r $db_port >> ~/streamlit_starter/log_dash.txt
+./st_starter.sh -f portfolio  -e port_env   -p 8502  -u $db_user -i $db_ip -r $db_port >> ~/streamlit_starter/log_port.txt
+```
+
 ### Manually
 
 To start one project in the background manually, use the `st_starter.sh` script with the appropriate tags:
@@ -67,22 +83,6 @@ To start one project in the background manually, use the `st_starter.sh` script 
 * r    Database port
 
 The streamlit project will have a `nohup.out` created in its folder, this is the streamlit log.
-
-### Automatically
-
-To start many projects in the background, edit the `secret.sh` to add both streamlit and database information. Note that `my_dash.py` must be in a folder called `my_dash`.
-
-```
-#!/bin/bash
-
-db_user="my_user:my_pw" # Database  login in the format of "my_user:my_pw". Quotes included
-db_ip=192.168.1.11   # Database local ip such as 192.168.1.11, without http. Quotes not included
-db_port=5432 # Database port such as 5432. Quotes not included
-
-# start script |   folder    |  conda_env  |  port  |          database info         |     log file location
-./st_starter.sh -f my_dash    -e dash_env   -p 8501  -u $db_user -i $db_ip -r $db_port >> ~/streamlit_starter/log_dash.txt
-./st_starter.sh -f portfolio  -e port_env   -p 8502  -u $db_user -i $db_ip -r $db_port >> ~/streamlit_starter/log_port.txt
-```
 
 ## Kill streamlit instances
 
