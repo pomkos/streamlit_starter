@@ -67,6 +67,8 @@ db_port=5432 # Database port such as 5432. Quotes not included
 ./st_starter.sh -f portfolio  -e port_env   -p 8502  -u $db_user -i $db_ip -r $db_port >> ~/streamlit_starter/log_port.txt
 ```
 
+Then just start it with `./secret.sh`
+
 ### Manually
 
 To start one project in the background manually, use the `st_starter.sh` script with the appropriate tags:
