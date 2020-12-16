@@ -5,7 +5,7 @@
         1. [Prerequisites](#prerequisites)
         2. [Manually](#manually)
         3. [Automatically](#automatically)
-    2. [Kill the streamlit instance](#kill-the-streamlit-instance)
+    2. [Kill streamlit instances](#kill-streamlit-instances)
 3. [Run at Startup with Crontab](#run-at-startup-with-crontab)
     1. [Run one](#run-one)
     2. [Run many](#run-many)
