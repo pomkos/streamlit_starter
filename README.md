@@ -16,7 +16,7 @@ A bash script to start streamlit scripts in the background. Was created out of a
 
 * [Portfolio](https://github.com/pomkos/portfolio) #wip
 * [Covid Dashboard](https://github.com/pomkos/covid_dash) #wip
-* [Venmo Calculator](https://github.com/pomkos/payme) #finished
+* [Venmo Calculator](https://github.com/pomkos/payme) #wip
 * [Protein Calculator](https://github.com/pomkos/brotein) #finished
 
 # How-to
