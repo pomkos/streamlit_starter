@@ -6,6 +6,7 @@
         2. [Manually](#manually)
         3. [Automatically](#automatically)
     2. [Kill streamlit instances](#kill-streamlit-instances)
+    3. [Update streamlit in all envs](#update-streamlit)
 3. [Run at Startup with Crontab](#run-at-startup-with-crontab)
     1. [Run one](#run-one)
     2. [Run many](#run-many)
@@ -100,6 +101,17 @@ pkill -f my_dash.py
 # Kill all streamlit instances
 killall -9 streamlit
 ```
+
+## Update streamlit in all envs
+
+It gets tedious to constantly activate, update, and deactivate environments. For this reason `st_updater.sh` was created. It will go through all environments provided and run `pip install streamlit --upgrade` in them (updates to the latest streamlit version), then deactivates the environment.
+
+1. Replace the current demo environment names with yours (no commas) (line 3)
+    `nano st_updater.sh`
+2. Give execute permissions
+    `sudo chmod +x st_updater.sh`
+3. Run the script
+    `./st_updater.sh`
 
 # Run at Startup with Crontab
 
