@@ -6,7 +6,7 @@
         2. [Manually](#manually)
         3. [Automatically](#automatically)
     2. [Kill streamlit instances](#kill-streamlit-instances)
-    3. [Update streamlit in all envs](#update-streamlit)
+    3. [Update streamlit in all envs](#update-streamlit-in-all-envs)
 3. [Run at Startup with Crontab](#run-at-startup-with-crontab)
     1. [Run one](#run-one)
     2. [Run many](#run-many)
