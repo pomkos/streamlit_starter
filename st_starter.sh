@@ -9,7 +9,7 @@ Help()
    echo
    echo "Starts a streamlit python script."
    echo
-   echo "Syntax: scriptTemplate [-h|f|e|p|u|i|r]"
+   echo "Syntax: ./st_starter [-h|f|e|p|u|i|r]"
    echo "options:"
    echo "h    Print this Help."
    echo "f    Folder python script is in. Assume script name = folder name"
@@ -26,7 +26,7 @@ Help()
 ################################################################################
 run_script()
 {
-    source ~/anaconda3/etc/profile.d/conda.sh
+    source ~/miniconda3/bin/activate
 
     cd ~/projects/$folder
     conda activate $my_env # activate the new conda env
